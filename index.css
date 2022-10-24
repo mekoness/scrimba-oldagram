@@ -1,0 +1,70 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+p {
+    margin: 0;
+}
+
+.top-text {
+    margin-left: 8px;
+}
+
+.post-text {
+    margin-bottom: 10px;
+}
+
+.container {
+    width: 400px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+section {
+    margin: 10px;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 130px;
+}
+
+.avatar {
+    width: 34px;
+    border-radius: 50%;
+}
+
+.main-img {
+    width: 100%;
+}
+
+.icon {
+    width: 25px;
+}
+
+.icon:hover,
+.icon:focus {
+    opacity: 50%;
+}
