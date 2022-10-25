@@ -26,11 +26,11 @@ const posts = [
         comment: "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
         likes: 152
     }
-]
+];
 
 // Render posts
 
-const container = document.querySelector("#post")
+const container = document.querySelector("#post");
 
 function renderPosts() {
     for (let i = 0; i < posts.length; i++) {
@@ -63,20 +63,23 @@ function renderPosts() {
 
 renderPosts()
 
-// Add likes function
+// Add like/dislike function
+let liked = false;
+const favIcon = document.querySelector("#fav-icon0");
 
-const favIcon = document.querySelector(".fav-icon")
-const mainImg = document.querySelector("#main-img0")
+favIcon.addEventListener("dblclick", likeDislike);
 
-favIcon.addEventListener("click", addLike )
-mainImg.addEventListener("dblclick", addLike)
-
-function addLike() {
-    const likesEl = document.querySelector("#likes-el0")
-    let liked = false
+function likeDislike() {
+    const likesEl = document.querySelector(`#likes-el0`);
     if (!liked) {
-        posts[0].likes ++
-        likesEl.textContent = posts[0].likes
-        liked = true
+        posts[0].likes ++;
+        likesEl.textContent = posts[0].likes;
+        favIcon.style.opacity = "100%";
+        liked = true;
+    } else {
+        posts[0].likes --;
+        likesEl.textContent = posts[0].likes;
+        favIcon.style.opacity = "50%";
+        liked = false;
     }
 }
