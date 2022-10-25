@@ -28,10 +28,55 @@ const posts = [
     }
 ]
 
-const favIcon = document.querySelector("#fav-icon")
-const likesEl = document.querySelector("#likes-el")
+// Render posts
 
-favIcon.addEventListener("dblclick", () => {
-    console.log("Double-clicked!")
-    likesEl.textContent = "Clicked!"
-})
+const container = document.querySelector("#post")
+
+function renderPosts() {
+    for (let i = 0; i < posts.length; i++) {
+        container.innerHTML += `
+            <section class="top">
+            <img src="${posts[i].avatar}" alt="User Profile Picture" class="avatar">
+            <div class="user-info">
+                <p class="top-text bold">${posts[i].name}</p>
+                <p class="top-text">${posts[i].location}</p>
+            </div>
+            </section>
+
+            <section class="main-post-img">
+            <img src="${posts[i].post}" alt="${posts[i].comment}" class="main-img" id="main-img${[i]}">
+            </section>
+
+            <section class="interact-btns">
+            <img class="icon fav-icon" id="fav-icon${[i]}" src="/images/icon-heart.png" alt="Favorite Icon">
+            <img class="icon" src="/images/icon-comment.png" alt="Comment Icon">
+            <img class="icon" src="/images/icon-dm.png" alt="DM Icon">
+            </section>
+
+            <section class="main-post-text">
+            <p class="post-text bold"><span id="likes-el${[i]}">${posts[i].likes}</span> likes</p>
+            <p class="post-text"><span class="bold">${posts[i].username}</span> ${posts[i].comment}</p>
+            </section>
+        `
+    }
+}
+
+renderPosts()
+
+// Add likes function
+
+const favIcon = document.querySelector(".fav-icon")
+const mainImg = document.querySelector("#main-img0")
+
+favIcon.addEventListener("click", addLike )
+mainImg.addEventListener("dblclick", addLike)
+
+function addLike() {
+    const likesEl = document.querySelector("#likes-el0")
+    let liked = false
+    if (!liked) {
+        posts[0].likes ++
+        likesEl.textContent = posts[0].likes
+        liked = true
+    }
+}
