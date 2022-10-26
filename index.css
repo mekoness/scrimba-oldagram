@@ -72,6 +72,7 @@ section {
 .icon {
     width: 25px;
     opacity: 50%;
+    margin-right: 15px;
 }
 
 .icon:hover,

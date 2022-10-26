@@ -48,13 +48,13 @@ function renderPosts() {
             </section>
 
             <section class="interact-btns">
-            <img class="icon fav-icon" id="fav-icon${[i]}" src="/images/icon-heart.png" alt="Favorite Icon">
-            <img class="icon" src="/images/icon-comment.png" alt="Comment Icon">
-            <img class="icon" src="/images/icon-dm.png" alt="DM Icon">
+            <img class="icon fav-icon" id="fav-icon${[i]}" src="images/icon-heart.png" alt="Favorite Icon">
+            <img class="icon" src="images/icon-comment.png" alt="Comment Icon">
+            <img class="icon" src="images/icon-dm.png" alt="DM Icon">
             </section>
 
             <section class="main-post-text">
-            <p class="post-text bold"><span id="likes-el${[i]}">${posts[i].likes}</span> likes</p>
+            <p class="post-text bold"><span class="likes-el" id="likes-el${[i]}">${posts[i].likes}</span> likes</p>
             <p class="post-text"><span class="bold">${posts[i].username}</span> ${posts[i].comment}</p>
             </section>
         `
@@ -63,23 +63,27 @@ function renderPosts() {
 
 renderPosts()
 
-// Add like/dislike function
-let liked = false;
-const favIcon = document.querySelector("#fav-icon0");
+// Add like/unlike function
 
-favIcon.addEventListener("dblclick", likeDislike);
+const favIcon = document.querySelectorAll(".fav-icon");
 
-function likeDislike() {
-    const likesEl = document.querySelector(`#likes-el0`);
+for (let i = 0; i < favIcon.length; i++) {
+    favIcon[i].addEventListener("dblclick", likeUnlike(i));
+}
+
+function likeUnlike(i) {
+    const likesEl = document.querySelectorAll(`.likes-el`);
+    let liked = false;
+
     if (!liked) {
-        posts[0].likes ++;
-        likesEl.textContent = posts[0].likes;
-        favIcon.style.opacity = "100%";
+        posts[i].likes ++;
+        likesEl[i].textContent = posts[i].likes;
+        favIcon[i].style.opacity = "100%";
         liked = true;
     } else {
-        posts[0].likes --;
-        likesEl.textContent = posts[0].likes;
-        favIcon.style.opacity = "50%";
+        posts[i].likes --;
+        likesEl[i].textContent = posts[i].likes;
+        favIcon[i].style.opacity = "50%";
         liked = false;
     }
 }
