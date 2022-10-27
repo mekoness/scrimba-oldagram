@@ -66,24 +66,26 @@ renderPosts()
 // Add like/unlike function
 
 const favIcon = document.querySelectorAll(".fav-icon");
+const mainImg = document.querySelectorAll(".main-img");
+let liked = false;
 
 for (let i = 0; i < favIcon.length; i++) {
     favIcon[i].addEventListener("dblclick", () => likeUnlike(i));
-}
+    mainImg[i].addEventListener("dblclick", () => likeUnlike(i));
+};
 
 function likeUnlike(i) {
     const likesEl = document.querySelectorAll(`.likes-el`);
-    let liked = false;
 
     if (!liked) {
+        liked = true;
         posts[i].likes ++;
         likesEl[i].textContent = posts[i].likes;
         favIcon[i].style.opacity = "100%";
-        liked = true;
-    } else {
+    } else if (liked) {
+        liked = false;
         posts[i].likes --;
         likesEl[i].textContent = posts[i].likes;
         favIcon[i].style.opacity = "50%";
-        liked = false;
     }
-}
+};
