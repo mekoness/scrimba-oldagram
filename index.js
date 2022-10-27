@@ -68,7 +68,7 @@ renderPosts()
 const favIcon = document.querySelectorAll(".fav-icon");
 
 for (let i = 0; i < favIcon.length; i++) {
-    favIcon[i].addEventListener("dblclick", likeUnlike(i));
+    favIcon[i].addEventListener("dblclick", () => likeUnlike(i));
 }
 
 function likeUnlike(i) {
